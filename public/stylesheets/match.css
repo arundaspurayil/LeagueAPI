@@ -1,0 +1,21 @@
+.match-container {
+  margin: 30px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.my-row{
+  padding: 10px;
+  border: 1px solid;
+
+  
+}
+
+.champion-col{
+  
+  margin: 5px 25px;
+  border: 1px solid;
+}

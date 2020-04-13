@@ -1,0 +1,32 @@
+mixin championinfo(user)
+    .row
+        .col.champion-col
+          .row.my-row
+            .col.my-col
+              img(src="http://ddragon.leagueoflegends.com/cdn/10.7.1/img/champion/"+user.championInfo.key+".png")
+            .col.my-col
+              p() #{user.summonerName}
+              h3() #{user.championInfo.name}
+          
+          each primarysecondary in user.championInfo.abilities
+            each ability in primarysecondary
+              .row.my-row
+                .col.my-col
+                  h3() #{ability.name}
+                  
+                  img(src="https://www.mobafire.com/images/ability/"+user.championInfo.name.toLowerCase().replace(/[ ]/gi,'-')+"-"+ ability.name.replace(/[^0-9a-zA-z ]/gi, '').replace(/\s+/g, '-').toLowerCase()+".png")
+                .col.my-col
+                  if(ability.cooldown)
+                    p() Cooldown: [ #{ability.cooldown.modifiers[0].values.toString().replace(/[,]/gi, ' / ')} ]
+                  else
+                    p() No Cooldown
+
+                  if(ability.cost)
+                    p() Cost: [ #{ability.cost.modifiers[0].values.toString().replace(/[,]/gi, ' / ')} ]
+                  else
+                    p() No Cost
+                  
+                  if(ability.targetRange)
+                    p() Range: #{ability.targetRange}
+
+                  p() #{ability.blurb}
