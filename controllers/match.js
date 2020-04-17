@@ -30,11 +30,12 @@ const kayn = Kayn(apikey)({
 exports.getCurrentGame = function(req, res, next) {
     kayn.CurrentGame.by.summonerID(req.params.summonerID).callback(async function(err, match){
         if(err){
-            console.log(err)
+            if(err.error.name == 'StatusCodeError'){
+                return res.render('index', {errors: {msg: 'User is not in a live game.'}})
+            }
         }
         await getChampionInfo(match)
 
-        //return res.send(match)
         res.render('match',{match: match})
     })   
 }

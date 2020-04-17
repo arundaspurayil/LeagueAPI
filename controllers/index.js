@@ -27,7 +27,7 @@ const kayn = Kayn(apikey)({
 })
 
 exports.getLandingPage = function(req, res, next) {
-    res.render('index');
+    res.render('index', {errors: {}});
     
 }
 
